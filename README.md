@@ -9,22 +9,22 @@
 ## Как это все работает.
 
 ```go
-    type AgeType struct {
-        Date string `json:"bd" comment:"день рождения"`
-        Col  int    `json:"col_of_year" comment:"кол-во полных лет"`
-    }
+type AgeType struct {
+    Date string `json:"bd" comment:"день рождения"`
+    Col  int    `json:"col_of_year" comment:"кол-во полных лет"`
+}
 
-    type A struct {
-        ID   int64              `json:"id" comment:"уникальный номер"`
-        Name string             `json:"name" comment:"имя"`
-        Age  AgeType            `json:"age" comment:"возраст"`
-        NonDocumentedField bool `json:"secret" comment:"-"`
-    }
+type A struct {
+    ID   int64              `json:"id" comment:"уникальный номер"`
+    Name string             `json:"name" comment:"имя"`
+    Age  AgeType            `json:"age" comment:"возраст"`
+    NonDocumentedField bool `json:"secret" comment:"-"`
+}
 
-	router := autodochttprouter.NewResolver()
-	router.Add("GET", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "Тестовый вызов", nil, nil)
-    router.Add("POST", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "Тестовый вызов", []interface{}{A{}}, []interface{A{}})
-    router.Add("DELETE", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "-", nil, nil)
+router := autodochttprouter.NewResolver()
+router.Add("GET", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "Тестовый вызов", nil, nil)
+router.Add("POST", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "Тестовый вызов", []interface{}{A{}}, []interface{A{}})
+router.Add("DELETE", "/test", func(w http.ResponseWriter, r *http.Request) { srvTestOkHandler(&w, r, db, cfg) }, "-", nil, nil)
 ```
 
 В данном примере мы:
